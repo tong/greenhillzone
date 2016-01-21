@@ -1,6 +1,8 @@
-_*
 bin/
 gen/
-ant.properties
+_*
+*.keystore
 local.properties
+NOTES.md
+release.sh
 TODO.md
