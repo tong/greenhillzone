@@ -6,12 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Paint;
 import java.util.ArrayList;
 
 public class Parallax {
 
-    private int width;
-	private int height;
+    public int width;
+	public int height;
 
     private float offsetX;
 	private float offsetY;
@@ -37,9 +38,11 @@ public class Parallax {
 
         matrix = new Matrix();
 
+        /*
         for( ParallaxLayer layer : layers ) {
-            android.util.Log.d( "greenhillzone","## "+layer.getWidth()+":"+layer.getHeight() );
+            android.util.Log.d( "greenhillzone",  "LAYER: "+layer.getWidth()+":"+layer.getHeight() );
         }
+        */
     }
 
     public final void addLayer( Bitmap bmp, float offsetX, float offetY ) {
@@ -61,6 +64,10 @@ public class Parallax {
 
         canvas.drawColor( backgroundColor );
 
+        //Matrix matrix = new Matrix();
+        //float scale = 1;
+
+        int i = 0;
         for( ParallaxLayer layer : layers ) {
 
             final Bitmap bmp = layer.getBitmap();
@@ -70,19 +77,20 @@ public class Parallax {
             final float layerWidth = layer.getWidth();
             final float layerHeight = layer.getHeight();
 
-            float tx = layer.offsetX;
-            if( !layer.fixed ) {
-                //tx -= (offsetX * (layer.getWidth() - width));
-                tx -= (offsetX * ( layerWidth - width*2 ));
-            }
-            //float ty = layer.offsetY; // height - layerHeight; //layer.offsetY; //layer.offsetY * layer.getHeight();
-            float ty = height + layerHeight/2;
+            float tx = offsetX * ( layerWidth - width );
+            float ty = height - layerHeight;
 
-            //android.util.Log.d("greenhillzone",""+ty );
-
-            matrix.setTranslate( tx, ty );
+            //matrix.preScale( scale, scale );
+            matrix.setTranslate( -tx, ty );
+            //matrix.postTranslate( -tx, ty );
 
             canvas.drawBitmap( layer.getBitmap(), matrix, paint );
+
+            //matrix.reset();
+
+            i++;
         }
+
+        matrix.reset();
     }
 }

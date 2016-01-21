@@ -4,9 +4,10 @@ import android.graphics.Bitmap;
 
 public class ParallaxLayer {
 
+    public boolean fixed = false;
+
     public float offsetX;
     public float offsetY;
-    public boolean fixed = false;
 
     private Bitmap bmp;
 
@@ -14,6 +15,12 @@ public class ParallaxLayer {
         this.bmp = bmp;
         this.offsetX = offsetX;
         this.offsetY = offsetY;
+    }
+
+    public ParallaxLayer( Bitmap bmp ) {
+        this.bmp = bmp;
+        this.offsetX = 0;
+        this.offsetY = 0;
     }
 
     public Bitmap getBitmap() {
