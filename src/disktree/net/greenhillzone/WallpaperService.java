@@ -34,6 +34,7 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 			@Override public final void run() { drawFrame(); }
 		};
 
+		private Context context;
 		private SharedPreferences prefs;
 		private Parallax parallax;
 		private String spritesheetName;
@@ -41,6 +42,7 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 		WallpaperEngine(Context context) {
 
 			super();
+			this.context = context;
 
 			WallpaperManager wallpaperManager = WallpaperManager.getInstance( context );
 			int wallpaperWidth = wallpaperManager.getDesiredMinimumWidth();
@@ -64,16 +66,8 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 			prefs = PreferenceManager.getDefaultSharedPreferences(context);
 			prefs.registerOnSharedPreferenceChangeListener(this);
 
-
 			parallax = new Parallax( 0, 0, 0xff2400b6, prefs.getBoolean( "pref_parallax", true ) );
-			//parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_4 ), 0, 0 );
-			//parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_3 ), 0, 0 );
-			//parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_2 ), 0, 0 );
-			//parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_1 ), 0, 0 );
-			//parallax.enabled = prefs.getBoolean( "pref_parallax", true );
-			//log("ENABLED: "+parallax.enabled );
-
-			applySpritesheet( "greenhillzone" );
+			applySpritesheet( "scrapbrainzone" );
 
 			handler.post( drawRunner );
 		}
@@ -89,10 +83,26 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_3 ), 0, 0 );
 				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_2 ), 0, 0 );
 				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_1 ), 0, 0 );
-			//} else if( spritesheetName.equals( "marblezone" ) ) {
+			} else if( name.equals( "marblezone" ) ) {
+				spritesheetName = name;
+				parallax.backgroundColor = 0xff0000b6;
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_4 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_3 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_2 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_1 ), 0, 0 );
+			} else if( name.equals( "scrapbrainzone" ) ) {
+				spritesheetName = name;
+				parallax.backgroundColor = 0xff6d4900;
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_4 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_3 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_2 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_1 ), 0, 0 );
+			} else if( name.equals( "random" ) ) {
+				//TODO
 			} else {
 				log( "UNKNOWN SPRITESHEET: "+spritesheetName );
 			}
+			handler.post( drawRunner );
 		}
 
 		@Override
@@ -134,7 +144,7 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 			//log( "OFFSET: "+xOffset+":"+yOffset );
 			//log( "STEP: "+xStep+":"+yStep );
 			//log( "PIXELS: "+xPixels+":"+yPixels );
-			handler.post(drawRunner);
+			handler.post( drawRunner );
 		}
 
 		/*
@@ -153,10 +163,10 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 
 		public void onSharedPreferenceChanged( SharedPreferences prefs, String key ) {
 			log( "onSharedPreferenceChanged: " + key );
-			if( key.equals("pref_parallax") ) {
+			if( key.equals( "pref_parallax" ) ) {
 				//Preference pref = findPreference(key);
 				parallax.enabled = prefs.getBoolean( key, true );
-			} else if( key.equals("pref_spritesheet") ) {
+			} else if( key.equals( "pref_spritesheet" ) ) {
 				applySpritesheet( prefs.getString( key, "greenhillzone" ) );
 			}
 		}

@@ -18,19 +18,19 @@
     <string name="pref_zoom_title">Zoom</string>
     <string name="pref_spritesheet_title">Spritesheet</string>
     <string name="pref_spritesheet_dialogTitle">Select Spritesheet</string>
-    <string name="pref_spritesheet_default">GreenHillZone</string>
+    <string name="pref_spritesheet_default">greenhillzone</string>
 
     <string-array name="pref_spritesheet_entries">
         <item>GreenHillZone</item>
         <item>MarbleZone</item>
-        <item>SpringYardZone</item>
+        <item>ScrapBrainZone</item>
         <item>Random</item>
     </string-array>
 
     <string-array name="pref_spritesheet_entries_values">
         <item>greenhillzone</item>
         <item>marblezone</item>
-        <item>springyardzone</item>
+        <item>scrapbrainzone</item>
         <item>random</item>
     </string-array>
 

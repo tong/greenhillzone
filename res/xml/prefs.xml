@@ -17,15 +17,13 @@
         android:defaultValue="1"/>
     -->
 
-    <!--
     <ListPreference
+        android:summary="%s"
         android:key="pref_spritesheet"
         android:title="@string/pref_spritesheet_title"
         android:dialogTitle="@string/pref_spritesheet_dialogTitle"
         android:entries="@array/pref_spritesheet_entries"
         android:entryValues="@array/pref_spritesheet_entries_values"
         android:defaultValue="@string/pref_spritesheet_default" />
-
-    -->
 
 </PreferenceScreen>
