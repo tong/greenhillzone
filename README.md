@@ -1,4 +1,6 @@
 
-# GeenHillZone
+# GreenHillZone
 
-Android live wallpaper.
+Parallax scrolling live wallpaper for android.
+
+![GeenHillZone](data/greenhillzone.png)

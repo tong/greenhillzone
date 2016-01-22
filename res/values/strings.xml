@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">GreenHillZone</string>
-    <string name="app_author">Disktree</string>
-    <string name="app_desc">GreenHillZone Wallpaper</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+<resources>
+
+    <!-- App -->
+
+    <string name="app_name">GreenHillZone</string>
+    <string name="app_desc">GreenHillZone Wallpaper</string>
+    <string name="app_author">Disktree</string>
+
+    <!-- Menu -->
+
+    <string name="menu_title_rate">Rate</string>
+
+    <!-- Preferences -->
+
+    <string name="pref_parallax_title">Parallax Scrolling</string>
+    <string name="pref_zoom_title">Zoom</string>
+    <string name="pref_spritesheet_title">Spritesheet</string>
+    <string name="pref_spritesheet_dialogTitle">Select Spritesheet</string>
+    <string name="pref_spritesheet_default">GreenHillZone</string>
+
+    <string-array name="pref_spritesheet_entries">
+        <item>GreenHillZone</item>
+        <item>MarbleZone</item>
+        <item>SpringYardZone</item>
+        <item>Random</item>
+    </string-array>
+
+    <string-array name="pref_spritesheet_entries_values">
+        <item>greenhillzone</item>
+        <item>marblezone</item>
+        <item>springyardzone</item>
+        <item>random</item>
+    </string-array>
+
+    <!-- AdMob -->
+
+    <string name="admob_banner">ca-app-pub-9250693547269746/1582307510</string>
+
 </resources>
