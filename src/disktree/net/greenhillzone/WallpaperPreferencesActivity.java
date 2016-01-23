@@ -41,8 +41,6 @@ public class WallpaperPreferencesActivity extends PreferenceActivity {
 		AdRequest adRequest = builder.build();
 		adView.loadAd( adRequest );
 
-		String id = om.Admob.ID;
-
 		//adView = AdMob.createBanner( this );
 		//RelativeLayout adLayout = (RelativeLayout) findViewById(R.id.ad);
         //adLayout.addView( adView );
