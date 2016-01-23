@@ -17,6 +17,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
+import disktree.net.greenhillzone.ParallaxLayer;
 
 public class WallpaperService extends android.service.wallpaper.WallpaperService {
 
@@ -67,9 +68,9 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 			prefs.registerOnSharedPreferenceChangeListener(this);
 
 			parallax = new Parallax( 0, 0, 0xff2400b6, prefs.getBoolean( "pref_parallax", true ) );
-			applySpritesheet( "scrapbrainzone" );
+			applySpritesheet( "greenhillzone" );
 
-			handler.post( drawRunner );
+			//handler.post( drawRunner );
 		}
 
 		private void applySpritesheet( String name ) {
@@ -79,30 +80,52 @@ public class WallpaperService extends android.service.wallpaper.WallpaperService
 			if( name.equals( "greenhillzone" ) ) {
 				spritesheetName = name;
 				parallax.backgroundColor = 0xff2400b6;
-				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_4 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_3 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_2 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_1 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_4 ), ParallaxLayer.ALIGN_TOP, 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_3 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_2 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_1 ) );
 			} else if( name.equals( "marblezone" ) ) {
 				spritesheetName = name;
 				parallax.backgroundColor = 0xff0000b6;
-				parallax.addLayer( getBitmapResource( R.drawable.marblezone_4 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.marblezone_3 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.marblezone_2 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.marblezone_1 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_4 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_3 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_2 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.marblezone_1 ) );
+			} else if( name.equals( "labyrinthzone" ) ) {
+				spritesheetName = name;
+				parallax.backgroundColor = 0xff000000;
+				parallax.addLayer( getBitmapResource( R.drawable.labyrinthzone_3 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.labyrinthzone_2 ), ParallaxLayer.ALIGN_TOP, 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.labyrinthzone_1 ) );
 			} else if( name.equals( "scrapbrainzone" ) ) {
 				spritesheetName = name;
 				parallax.backgroundColor = 0xff6d4900;
-				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_4 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_3 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_2 ), 0, 0 );
-				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_1 ), 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_4 ), ParallaxLayer.ALIGN_TOP, 0, 0 );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_3 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_2 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.scrapbrainzone_1 ) );
+			} else if( name.equals( "starlightzone" ) ) {
+				spritesheetName = name;
+				parallax.backgroundColor = 0xff000000;
+				parallax.addLayer( getBitmapResource( R.drawable.starlightzone_5 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.starlightzone_4 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.starlightzone_3 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.starlightzone_2 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.starlightzone_1 ) );
+			} else if( name.equals( "springyardzone" ) ) {
+				spritesheetName = name;
+				parallax.backgroundColor = 0xff6d246d;
+				//parallax.addLayer( getBitmapResource( R.drawable.springyardzone_4 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.springyardzone_3 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.springyardzone_2 ) );
+				parallax.addLayer( getBitmapResource( R.drawable.springyardzone_1 ) );
 			} else if( name.equals( "random" ) ) {
 				//TODO
 			} else {
 				log( "UNKNOWN SPRITESHEET: "+spritesheetName );
 			}
 			handler.post( drawRunner );
+			//drawFrame();
 		}
 
 		@Override

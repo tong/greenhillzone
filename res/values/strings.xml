@@ -11,6 +11,7 @@
     <!-- Menu -->
 
     <string name="menu_title_rate">Rate</string>
+    <string name="menu_title_sourcecode">Source Code</string>
 
     <!-- Preferences -->
 
@@ -24,6 +25,8 @@
         <item>GreenHillZone</item>
         <item>MarbleZone</item>
         <item>ScrapBrainZone</item>
+        <item>StarLightZone</item>
+        <item>SpringYardZone</item>
         <item>Random</item>
     </string-array>
 
@@ -31,6 +34,8 @@
         <item>greenhillzone</item>
         <item>marblezone</item>
         <item>scrapbrainzone</item>
+        <item>starlightzone</item>
+        <item>springyardzone</item>
         <item>random</item>
     </string-array>
 

@@ -36,7 +36,7 @@ public class Parallax {
 
         paint = new Paint();
         paint.setStyle( Paint.Style.FILL );
-        paint.setAntiAlias( true );
+        //paint.setAntiAlias( true );
 
         matrix = new Matrix();
 
@@ -47,14 +47,18 @@ public class Parallax {
         */
     }
 
-    public final void addLayer( Bitmap bmp, float offsetX, float offetY ) {
-        ParallaxLayer l = new ParallaxLayer( bmp, offsetX, offsetY );
+    public final void addLayer( Bitmap bmp, int align, float offsetX, float offetY ) {
+        ParallaxLayer l = new ParallaxLayer( bmp, align, offsetX, offsetY );
         layers.add(l);
         if( l.getWidth() < minWidth ) minWidth = l.getWidth();
     }
 
+    public final void addLayer( Bitmap bmp, int align ) {
+        addLayer( bmp, align, 0, 0 );
+    }
+
     public final void addLayer( Bitmap bmp ) {
-        addLayer( bmp, 0,0 );
+        addLayer( bmp, ParallaxLayer.ALIGN_BOTTOM );
     }
 
     public void clear() {
@@ -84,12 +88,22 @@ public class Parallax {
             float tx = 0;
             float ty = 0;
 
-            if( enabled ) {
+            if( enabled && !layer.fixed ) {
                 tx = offsetX * ( layerWidth - width );
             } else {
                 tx = 0; //offsetX * minWidth;
             }
-            ty = height - layerHeight;
+            switch( layer.getAlign() ) {
+            case ParallaxLayer.ALIGN_TOP:
+                ty = 0;
+                break;
+            case ParallaxLayer.ALIGN_CENTER:
+                ty = height/2 - layerHeight/2;
+                break;
+            case ParallaxLayer.ALIGN_BOTTOM:
+                ty = height - layerHeight;
+                break;
+            }
 
             //matrix.preScale( scale, scale );
             matrix.setTranslate( -tx, ty );
@@ -97,11 +111,11 @@ public class Parallax {
 
             canvas.drawBitmap( layer.getBitmap(), matrix, paint );
 
-            //matrix.reset();
+            matrix.reset();
 
             i++;
         }
 
-        matrix.reset();
+        //matrix.reset();
     }
 }

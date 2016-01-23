@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
         int screenWidth = metrics.widthPixels;
         int screenHeight = metrics.heightPixels;
 
+        /*
         ParallaxView parallax = new ParallaxView( this, screenWidth, screenHeight, 0xff2400b6 );
         parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_4 ), 0, 0 );
         parallax.addLayer( getBitmapResource( R.drawable.greenhillzone_3 ), 0, 0 );
@@ -47,6 +48,7 @@ public class MainActivity extends Activity {
         //setContentView( parallax );
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.parallax);
         layout.addView(parallax);
+        */
 
         AdView adView = (AdView) findViewById( R.id.adView );
         AdRequest.Builder builder = new AdRequest.Builder();
@@ -70,11 +72,13 @@ public class MainActivity extends Activity {
         return BitmapFactory.decodeResource( getResources(), id );
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate( R.menu.menu_main, menu );
+        getMenuInflater().inflate( R.menu.menu, menu );
         return true;
     }
+    */
 
     private static final void log( String str ) {
         android.util.Log.d( TAG, "GreenhillWallpaperEngine: "+str );
